@@ -1,0 +1,16 @@
+version: '2.1'
+services:
+  twitch-archiver:
+    #image: htobi02/twitch-archiver:latest
+    build: .
+    container_name: twitch-archiver
+    volumes:
+      - ./vods:/vods
+    env_file:
+      - .env
+    environment:
+      # Channelname, example: "PietSmiet"
+      - STR_CHANNEL=
+      # Streaming Resolution, example: "best" for always using the best resolution
+      - STR_RES=
+    restart: unless-stopped
